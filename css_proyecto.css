@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+    background-color: #FFFDEC;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 25px 25px; 
+    box-shadow: 0 2px 7px rgba(0,0,0,0.1); 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFDEC;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style-type: none;
+}
+
+.dropdown-content li {
+    padding: 12px 16px;
+}
+
+.dropdown-content li a {
+    color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.auth-button a {
+    text-decoration: none;
+    color: white;
+    background-color: #4d7151;
+    padding: 15px 20px;
+    border-radius: 15px;
+} 
+
+.hero {
+    opacity: 90%; 
+    background-image: url('https://hips.hearstapps.com/hmg-prod/images/gettyimages-80489928-654c0b6351556.jpg'); /* Aquí pones la URL de tu imagen */
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: #FFFDEC;
+    text-align: right;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.hero-text h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 20px;
+}
+
+.footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        font-size: large;
+        color: orange;
+}
