@@ -1,15 +1,29 @@
 <?php
+    $servername = 'localhost:3307';
+    $username = 'root';
+    $password = "";
+    $database = 'adopcion_cr';
+    
+    // Crear conexión
+    $conn = new mysqli($servername, $username, $password, $database);
+    
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+    
 
-use cweb\Member;
+    $ID_Vet = $_GET['id'];;
 
-if (!empty($_POST["signup-btn"])) {
-	require_once './Model/Member.php';
-	$member = new Member();
-	$registrationResponse = $member->registerMember();
-}
+    
+    $sql="SELECT * FROM tab_veterinarios WHERE ID_Vet='$ID_Vet'";
+    $query=mysqli_query($conn, $sql);
+
+    $row=mysqli_fetch_array($query);
+
 ?>
-<HTML>
 
+<HTML>
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,108 +79,51 @@ if (!empty($_POST["signup-btn"])) {
             </div>
         </nav>
     </header>
-    <?php
-            if (!empty($registrationResponse["status"])) {
-            ?>
-                <?php
-                if ($registrationResponse["status"] == "error") {
-                ?>
-                        <div class="content">
-                            <div class="content-text"><a style="color: red;" >* </a><?php echo $registrationResponse["message"]; ?>
-                            </div>
-                        </div>
-                <?php
-                } else if ($registrationResponse["status"] == "success") {
-                ?>
-                    <div class="content">
-                            <div class="content-text"><?php echo $registrationResponse["message"]; ?>
-                            </div>
-                        </div>
-                <?php
-                }
-                ?>
-            <?php
-            }
-            ?>
-        <div class="error-msg" id="error-msg"></div>
-
+   
     <div class="login">
-        <h1>Registro de Usuario</h1>
-        <form name="sign-up" action="" method="post"  onsubmit="return signupValidation()">
-       
-            <label for="cedula">
+        <h1>Actualizar Veterinario</h1>
+        <form name="editar_vet" action="editar_vet_con.php" method="POST">
+            <input type="hidden" name="ID_Vet" id="ID_Vet" value="<?= $row['ID_Vet']?>">
+            <label for="Nombre_Vet">
                 <i class="fas fa-id-card"></i>
             </label>
-            <input type="text" name="cedula" placeholder="Cédula" id="cedula" required>
+            <input type="text" name="Nombre_Vet" placeholder="Nombre" id="Nombre_Vet" value="<?= $row['Nombre_Vet']?>" required>
             
-            <label for="nombre">
-                <i class="fa fa-address-card"></i>
+            <label for="Ubicacion">
+                <i class="fas fa-map-marked-alt"></i>
             </label>
-            <input type="text" name="nombre" placeholder="Nombre" id="nombre" required>
+            <input type="text" name="Ubicacion" placeholder="Ubicación" id="Ubicacion" value="<?= $row['Ubicacion']?>" required>
 
-            <label for="apellido">
-                <i class="fa fa-user"></i>
+            <label for="Horario">
+                <i class="fas fa-clock"></i>
             </label>
-            <input type="text" name="apellido" placeholder="Apellido" id="apellido" required>
+            <input type="text" name="Horario" placeholder="Horario" id="Horario" value="<?= $row['Horario']?>" required>
 
-            <label for="correo">
-                <i class="fas fa-at"></i>
+            <label for="Telefono">
+                <i class="fa fa-phone"></i>
             </label>
-            <input type="text" name="correo" placeholder="Correo" id="correo" required>
+            <input type="text" name="Telefono" placeholder="Teléfono" id="Telefono" value="<?= $row['Telefono']?>" required>
 
-            <label for="password">
-                <i class="fas fa-lock"></i>
+            <label for="Especialidad">
+                <i class="fas fa-id-card-alt"></i>
             </label>
-            <input type="password" name="signup-password" placeholder="Contraseña" id="signup-password" required>
+            <input type="text" name="Especialidad" placeholder="Especialidad" id="Especialidad" value="<?= $row['Especialidad']?>" required>
 
+            <label for="Imagen">
+                <i class="fas fa-image"></i>
+            </label>
+            <input type="text" name="Imagen" placeholder="Link de la Imagen" id="Imagen" value="<?= $row['Imagen']?>" required>
+            
+            <label for="Frame_Mapa">
+                <i class="fas fa-map-marker-alt"></i>
+            </label>
+            <input type="text" name="Frame_Mapa" placeholder="Frame del Mapa" id="Frame_Mapa" value="<?= $row['Frame_Mapa']?>" required>
 
-            <input type="submit" name="signup-btn"  id="signup-btn" value="Registrar usuario">
+            <input type="submit" name="agregar_vet_btn"  id="agregar_vet_btn" value="Editar veterinario">
         </form>
 
     </div>
-
-	<script>
-		function signupValidation() {
-			var valid = true;
-
-			// $("#cedula").removeClass("error-field");
-			// $("#correo").removeClass("error-field");
-			// $("#password").removeClass("error-field");
-			// $("#confirm-password").removeClass("error-field");
-
-			var cedula = $("#cedula").val();
-            var nombre = $("#nombre").val();
-            var apellido = $("#apellido").val();
-			var correo = $("#correo").val();
-			var Password = $('#signup-password').val();
-			var ConfirmPassword = $('#confirm-password').val();
-			var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-			// $("#username-info").html("").hide();
-			// $("#email-info").html("").hide();
-
-			iif (!emailRegex.test(correo)) {
-				$("#error-msg").html("No es un correo válido.").show();
-				valid = false;
-			}
-			if (Password != ConfirmPassword) {
-				$("#error-msg").html("Las dos contraseñas deben coincidir.").show();
-				valid = false;
-			}
-			if (valid == false) {
-				$('.error-field').first().focus();
-				valid = false;
-			}
-            
-			return valid;
-		}
-
-        document.getElementById('aceptar').addEventListener('click', function(event) {
-        event.preventDefault(); // Previene la acción por defecto del enlace
-        var contentDiv = document.getElementById('window-notice');
-        contentDiv.classList.toggle('hidden'); 
-    });
-	</script>
 </BODY>
+
 
 </HTML>

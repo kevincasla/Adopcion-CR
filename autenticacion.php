@@ -31,7 +31,7 @@ if (!isset($_POST['username'], $_POST['password'])) {
 
 // evitar inyección sql
 
-if ($stmt = $conexion->prepare('SELECT cedula,password,nombre FROM usuario WHERE correo = ?')) {
+if ($stmt = $conexion->prepare('SELECT cedula,password,nombre,admin FROM usuario WHERE correo = ?')) {
 
     // parámetros de enlace de la cadena s
 
@@ -44,7 +44,7 @@ if ($stmt = $conexion->prepare('SELECT cedula,password,nombre FROM usuario WHERE
 
 $stmt->store_result();
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($cedula, $password,$nombre);
+    $stmt->bind_result($cedula, $password,$nombre,$admin);
     $stmt->fetch();
 
     // se confirma que la cuenta existe ahora validamos la contraseña
@@ -59,6 +59,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['name'] = $_POST['username'];
         $_SESSION['nombre'] = $nombre;
         $_SESSION['cedula'] = $cedula;
+        $_SESSION['admin'] = $admin;
         header('Location: inicio.php');
     }
 } else {

@@ -86,8 +86,7 @@ $stmt->close();
                     <a href="#">Veterinarios</a>
                     <ul class="dropdown-content">
                         <li><a href="#"></a></li>
-                        <li><a href="vetAsociados.html">Veterinaros Asociados</a></li>
-                        <li><a href="mapaVet.html">Mapa de Veterinarios</a></li>
+                        <li><a href="vetAsociados.php">Veterinaros Asociados</a></li>
                     </ul>
                 </li>
                 <li><a href="foro.html">Foro</a></li>
