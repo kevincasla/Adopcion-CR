@@ -3,4 +3,4 @@ session_start();
 session_destroy();
 
 
-header('Location: proyecto.html');
+header('Location: inicio.php');
