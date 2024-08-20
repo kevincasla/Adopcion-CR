@@ -50,20 +50,22 @@ if (!isset($_SESSION['loggedin'])) {
                 exit('Fallo en la conexión de MySQL:' . mysqli_connect_error());
             }
             // Preparar la consulta SQL
-            $sql = 'SELECT ID_Tema, Titulo, Descripcion, Fecha_creacion FROM TAB_TEMAS_FORO';
+            $sql = 'SELECT ID_Tema, Titulo, Descripcion, Fecha_creacion, imagen FROM TAB_TEMAS_FORO';
             $result = $conexion->query($sql);
 
             // Verificar si se obtuvieron resultados
             if ($result->num_rows > 0) {
                 // Recorrer los resultados y mostrar los datos
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="cuidados-card">';                    
+                    echo '<div class="cuidados-card">';
+                    echo '        <img src="' . htmlspecialchars($row['imagen']) . '" alt="' . htmlspecialchars($row['Titulo']) . '" class="foro-image">';                    
                     echo '    <div class="dog-details">';
                     echo '        <h2>' . htmlspecialchars($row['Titulo']) . '</h2>';
                     echo '        <p>' . htmlspecialchars($row['Descripcion']) . '</p>';
                     echo '    </div>';
                     echo '    <a href="agregar_tema_foro.php" class="adopt-button">Agregar un tema</a>';
                     echo '</div>';
+
                 }
             }
             ?>

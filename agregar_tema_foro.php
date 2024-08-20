@@ -1,4 +1,3 @@
-<!--agregar_tema_foro.php-->
 <HTML>
 
 <head>
@@ -38,6 +37,11 @@
                 <i class="fas fa-align-left"></i>
             </label>
             <input type="text" name="Descripcion" placeholder="Descripción del tema" id="Descripcion" required>
+
+            <label>
+                <i class="fa-solid fa-image"></i> 
+            </label> 
+            <input type="text" name="imagen" placeholder="Imagen" id="imagen" required>
 
             <input type="submit" href="foro.html" name="agregar_tema_btn" id="agregar_tema_btn" value="Agregar tema">
         </form>

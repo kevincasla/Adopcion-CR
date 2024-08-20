@@ -1,4 +1,3 @@
-//agregar_tema_con.php
 <?php
     $servername = 'localhost:3307';
     $username = 'root';
@@ -17,8 +16,9 @@
     $Titulo = $_POST['Titulo'];
     $Descripcion = $_POST['Descripcion'];
     $Fecha_creacion = null;
+    $imagen = $_POST['imagen'];
 
-    $sql = "INSERT INTO tab_temas_foro VALUES('$ID_Tema','$Titulo','$Descripcion','$Fecha_creacion')";
+    $sql = "INSERT INTO tab_temas_foro VALUES('$ID_Tema','$Titulo','$Descripcion', CURRENT_DATE,'$imagen')";
     $query = mysqli_query($conn, $sql);
 
     if($query){
