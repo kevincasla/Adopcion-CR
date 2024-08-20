@@ -22,7 +22,7 @@
     $query = mysqli_query($conn, $sql);
 
     if($query){
-        Header("Location: agregar_tema_foro.php");
+        Header("Location: foro.php");
     }else{
 
     }

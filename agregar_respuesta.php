@@ -1,5 +1,4 @@
 <?php
-//Conexión de Prueba de editar tema de foro
 
  $servername = 'localhost:3307';
  $username = 'root';
@@ -14,19 +13,20 @@
      die("Conexión fallida: " . $conn->connect_error);
  }
 
- $ID_Tema = $_POST["ID_Tema"];
- $Titulo = $_POST['Titulo'];
- $Descripcion = $_POST['Descripcion'];
+ 
+ $ID_Pregunta = null;
+ $ID_Tema = $_POST['ID_Tema'];
+ $Respuesta = $_POST['Respuesta'];
  $Fecha_creacion = null;
- $imagen = $_POST['imagen'];
+ $nombre_usuario = $_POST['nombre_usuario'];
 
- $sql = "UPDATE tab_temas_foro SET Titulo='$Titulo',Descripcion='$Descripcion', Fecha_creacion=CURRENT_DATE , imagen='$imagen' WHERE ID_Tema='$ID_Tema'";
+ $sql = "INSERT INTO tab_preguntas_respuestas VALUES('$ID_Pregunta','$ID_Tema','$Respuesta',CURRENT_DATE,'$nombre_usuario')";
  $query = mysqli_query($conn, $sql);
 
  if($query){
-    Header("Location: foro.php");
-}else{
+     Header("Location: ver_tema.php?ID_Tema=$ID_Tema");
+ }else{
 
-}
+ }
 
 ?>

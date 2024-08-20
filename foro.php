@@ -20,6 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Adopción CR</title>
     <link rel="stylesheet" href="css_Adopcion.css">
     <link rel="stylesheet" href="css_proyecto.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!--<script src="load-header.js" defer></script> -->
 </head>
@@ -41,7 +42,7 @@ if (!isset($_SESSION['loggedin'])) {
         <?php
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
             echo '<div class="adopt-button" style="display: initial; margin: 100px";>
-               <a href="agregar_tema_foro.php" style="color: white;text-decoration-line: none;" ;="">Agregar cuidado</a>
+               <a href="agregar_tema_foro.php" style="color: white;text-decoration-line: none;" ;="">Agregar Tema al Foro</a>
            </div>';
         }
         ?>
@@ -74,8 +75,16 @@ if (!isset($_SESSION['loggedin'])) {
                     echo '    <div class="dog-details">';
                     echo '        <h2>' . htmlspecialchars($row['Titulo']) . '</h2>';
                     echo '        <p>' . htmlspecialchars($row['Descripcion']) . '</p>';
-                    echo '    </div>';
-                    echo '</div>';
+                    
+                    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
+                        echo '<br>
+                       <div class="card-actions">
+                           <form action="ver_tema.php" method="get" style="display:inline;">
+                               <input id="ID_Tema" type="hidden" name="ID_Tema" value="' . $row["ID_Tema"] . '">
+                               <button type="submit" class="btn btn-success">Ver Tema</button>
+                           </form>
+                       </div>';
+                    }
 
                     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'si') {
                         echo '<br>
@@ -84,17 +93,20 @@ if (!isset($_SESSION['loggedin'])) {
                                <input id="id" type="hidden" name="id" value="' . $row["ID_Tema"] . '">
                                <button type="submit" class="btn btn-warning">Editar</button>
                            </form>
-                           <form action="eliminar_tema_foro.php" method="get" style="display:inline;" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este foro?\');">
-                               <input type="hidden" id="id" name="id" value="' . $row["ID_Tema"] . '">
+                           <form action="eliminar_tema_foro.php" method="get" style="display:inline;" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este tema?\');">
+                               <input type="hidden" id="ID_Tema" name="ID_Tema" value="' . $row["ID_Tema"] . '">
                                <button type="submit" class="btn btn-danger">Eliminar</button>
                            </form>
                        </div>';
                        }
 
+                    echo '    </div>';
+                    echo '</div>';
+
                 }
 
             } else{
-                echo "<p>No hay foros registrados"
+                echo "<p>No hay foros registrados";
             }
             ?>
         </div>
