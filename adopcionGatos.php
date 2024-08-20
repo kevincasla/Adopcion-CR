@@ -16,14 +16,16 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Adopción CR</title>
     <link rel="stylesheet" href="css_Adopcion.css">
     <link rel="stylesheet" href="css_proyecto.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!--<script src="load-header.js" defer></script> -->
 </head>
 
 <body>
-    
-<div id="header-placeholder"></div>
-<!--Cargamos el header-->
+
+    <div id="header-placeholder"></div>
+    <!--Cargamos el header-->
     <script>
         fetch('header.php')
             .then(response => response.text())
@@ -31,9 +33,17 @@ if (!isset($_SESSION['loggedin'])) {
                 document.getElementById('header-placeholder').innerHTML = data;
             });
     </script>
-    
+
     <div class="container">
         <h1>Gatos en Adopción</h1>
+        <?php
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
+            echo '<div class="adopt-button" style="display: initial";>
+               <a href="agregarGato.php" style="color: white;text-decoration-line: none;" ;="">Publicar mascota</a>
+           </div>';
+        }
+        ?>
+
         <div class="dog-grid">
             <?php
             $DATABASE_HOST = 'localhost:3307';
@@ -65,9 +75,25 @@ if (!isset($_SESSION['loggedin'])) {
                     echo '        <p>Género: ' . htmlspecialchars($row['Genero']) . '</p>';
                     echo '        <p>Tamaño: ' . htmlspecialchars($row['Tamano']) . '</p>';
                     echo '        <p>Número de contacto: ' . htmlspecialchars($row['Numero_Contacto']) . '</p>';
+                    echo '        <p>Necesidad especial: ' . htmlspecialchars($row['Necesidades_Especiales']) . '</p>';
                     echo '    </div>';
                     echo '    <a href="#" class="adopt-button">¡Adóptame!</a>';
+
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'si') {
+                        echo '<br>
+                       <div class="card-actions" style= "padding: inherit;">
+                           <form action="editar_Gato.php" method="get" style="display:inline;">
+                               <input id="id" type="hidden" name="id" value="' . $row["ID_Gato"] . '">
+                               <button type="submit" class="btn btn-warning">Editar</button>
+                           </form>
+                           <form action="eliminar_Gato.php" method="get" style="display:inline;" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este gato?\');">
+                               <input type="hidden" id="id" name="id" value="' . $row["ID_Gato"] . '">
+                               <button type="submit" class="btn btn-danger">Eliminar</button>
+                           </form>
+                       </div>';
+                    }
                     echo '</div>';
+                    
                 }
             }
             ?>
