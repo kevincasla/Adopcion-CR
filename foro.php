@@ -34,6 +34,14 @@ if (!isset($_SESSION['loggedin'])) {
     
     <div class="container">
         <h1>Foro</h1>
+        <?php
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
+            echo '<div class="adopt-button" style="display: initial; margin: 100px";>
+               <a href="agregar_tema_foro.php" style="color: white;text-decoration-line: none;" ;="">Agregar cuidado</a>
+           </div>';
+        }
+        ?>
+
         <div class="cuidados-list">
             <?php
             $DATABASE_HOST = 'localhost:3307';
@@ -57,13 +65,12 @@ if (!isset($_SESSION['loggedin'])) {
             if ($result->num_rows > 0) {
                 // Recorrer los resultados y mostrar los datos
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="cuidados-card">';
+                    echo '<div class="cuidados-card" style = "margin-top: 20px";>';                    
                     echo '        <img src="' . htmlspecialchars($row['imagen']) . '" alt="' . htmlspecialchars($row['Titulo']) . '" class="foro-image">';                    
                     echo '    <div class="dog-details">';
                     echo '        <h2>' . htmlspecialchars($row['Titulo']) . '</h2>';
                     echo '        <p>' . htmlspecialchars($row['Descripcion']) . '</p>';
                     echo '    </div>';
-                    echo '    <a href="agregar_tema_foro.php" class="adopt-button">Agregar un tema</a>';
                     echo '</div>';
 
                 }
