@@ -1,6 +1,5 @@
-// adoptar_perros_com.php
 <?php
-    $servername = 'localhost:3306';
+    $servername = 'localhost:3307';
     $username = 'root';
     $password = "";
     $database = 'adopcion_cr';
@@ -12,6 +11,7 @@
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);
     }
+    
     $ID_Formulario = null;
     $nombre = $_POST['nombre'];
     $Telefono = $_POST['Telefono'];
@@ -31,7 +31,7 @@
     $query = mysqli_query ($conn, $sql);
 
     if($query){
-        Header("Location: adoptar_perros_foro.php");
+        Header("Location: adopcionPerros.php");
     }else{
 
     }
