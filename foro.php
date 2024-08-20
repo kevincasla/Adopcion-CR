@@ -1,10 +1,14 @@
 <?php
+//foro con crud
+
+//confirmar sesion
 session_start();
 
 if (!isset($_SESSION['loggedin'])) {
     header('Location: index.html');
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +77,24 @@ if (!isset($_SESSION['loggedin'])) {
                     echo '    </div>';
                     echo '</div>';
 
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'si') {
+                        echo '<br>
+                       <div class="card-actions">
+                           <form action="editar_tema_foro.php" method="get" style="display:inline;">
+                               <input id="id" type="hidden" name="id" value="' . $row["ID_Tema"] . '">
+                               <button type="submit" class="btn btn-warning">Editar</button>
+                           </form>
+                           <form action="eliminar_tema_foro.php" method="get" style="display:inline;" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este foro?\');">
+                               <input type="hidden" id="id" name="id" value="' . $row["ID_Tema"] . '">
+                               <button type="submit" class="btn btn-danger">Eliminar</button>
+                           </form>
+                       </div>';
+                       }
+
                 }
+
+            } else{
+                echo "<p>No hay foros registrados"
             }
             ?>
         </div>

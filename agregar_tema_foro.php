@@ -38,7 +38,7 @@
             </label>
             <input type="text" name="Descripcion" placeholder="Descripción del tema" id="Descripcion" required>
 
-            <label>
+            <label for="imagen">
                 <i class="fa-solid fa-image"></i> 
             </label> 
             <input type="text" name="imagen" placeholder="Imagen" id="imagen" required>
