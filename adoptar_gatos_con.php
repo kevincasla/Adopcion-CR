@@ -1,4 +1,5 @@
 <?php
+
     $servername = 'localhost:3307';
     $username = 'root';
     $password = "";
@@ -18,20 +19,20 @@
     $Motivo = $_POST['Motivo'];
     $Tipo_Vivienda = $_POST['Tipo_Vivienda'];
     $Visitas_Hogar = $_POST['Visitas_Hogar'];
-    $correo = null;
+    $correo = $_POST['correo'];
     $Direccion = $_POST['Direccion'];
     $Edad = $_POST['Edad'];
     $Ocupacion = $_POST['Ocupacion'];
     $Propiedad_De_Vivienda = $_POST['Propiedad_De_Vivienda'];
     $Necesidades_Especiales = $_POST['Necesidades_Especiales'];
-    $ID_Gato = null;
+    $ID_Gato = $_POST['ID_Gato'];
 
     $sql = "INSERT INTO tab_formulario_gatos VALUES ('$ID_Formulario','$nombre','$Telefono','$Motivo','$Tipo_Vivienda','$Visitas_Hogar','$correo','$Direccion','$Edad','$Ocupacion',
-    '$Propiedad_De_Vivienda','$Necesidades_Especiales',$ID_Gato')";
+    '$Propiedad_De_Vivienda','$Necesidades_Especiales','$ID_Gato')";
     $query = mysqli_query($conn, $sql);
 
     if($query){
-        Header("Location: adoptar_gatos_foro.php");
+        Header("Location: adopcionGatos.php");
     }else{
 
     }

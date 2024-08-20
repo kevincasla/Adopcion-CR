@@ -1,34 +1,60 @@
 <?php
 
-// confirmar sesion
 session_start();
-
 
 if (!isset($_SESSION['loggedin'])) {
 
-    $_SESSION['loggedin'] = FALSE;
+    header('Location: index.html');
+    exit;
 }
 
+$ID_Gato = $_GET['ID_Gato'];
 
-$servername = 'localhost:3307';
-$username = 'root';
-$password = "";
-$database = 'adopcion_cr';
+$DATABASE_HOST = 'localhost:3307';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'adopcion_cr';
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $database);
+// conexion a la base de datos
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+$conexion = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+
+if (mysqli_connect_error()) {
+
+    // si se encuentra error en la conexión
+
+    exit('Fallo en la conexión de MySQL:' . mysqli_connect_error());
 }
+
+$stmt = $conexion->prepare('SELECT password, correo, nombre, apellido FROM usuario WHERE cedula = ?');
+
+$stmt->bind_param('i', $_SESSION['cedula']);
+$stmt->execute();
+$stmt->bind_result($password, $correo, $nombre, $apellido);
+$stmt->fetch();
+$stmt->close();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopcion CR</title>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1508112454086-9a507dc91f73?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            /* Ruta a tu imagen */
+            background-size: cover;
+            /* Escala la imagen para cubrir todo el fondo */
+            background-position: center;
+            /* Centra la imagen */
+            background-repeat: no-repeat;
+            /* Evita que la imagen se repita */
+        }
+    </style>
+
     <link rel="stylesheet" href="css_inicio_sesion.css">
     <link rel="stylesheet" href="css_Adopcion.css">
     <link rel="stylesheet" href="css_proyecto.css">
@@ -53,7 +79,7 @@ if ($conn->connect_error) {
             <label for="nombre">
                 <i class="fas fa-id-card"></i>
             </label>
-            <input type="text" name="nombre" placeholder="Nombre" id="nombre" required>
+            <input type="text" name="nombre" placeholder="Nombre"  value="<?= $_SESSION['nombre'], " ", $apellido ?> " required readonly>
 
             <label for="Telefono">
                 <i class="fa fa-phone"></i>
@@ -78,7 +104,7 @@ if ($conn->connect_error) {
             <label for="correo">
                 <i class="fa-solid fa-envelope"></i>
             </label>
-            <input type="text" name="Correo" placeholder="Correo" id="correo" required>
+            <input type="text" name="correo" placeholder="Correo" id="correo" value="<?= $correo ?>" required readonly>
 
             <label for="Direccion">
                 <i class="fa-solid fa-location-dot"></i>
@@ -104,7 +130,8 @@ if ($conn->connect_error) {
                 <i class="fa-solid fa-person"></i>
             </label>
             <input type="text" name="Necesidades_Especiales" placeholder="Necesidades Especiales" id="Necesidads_Especiales" requiered>
-
+            
+            <input type="hidden" name="ID_Gato" id="ID_Gato" value="<?= $ID_Gato ?>">
             
 
             <input type="submit" href="adopcionGatos.php" name="enivar_solicitud_btn" id="enviar_solicitud_btn" value="Enviar solicitud">
