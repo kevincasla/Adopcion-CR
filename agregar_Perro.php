@@ -44,7 +44,7 @@
             <label for="Numero_Contacto">
                 <i class="fa fa-phone"></i>
             </label>
-            <input type="text" name="Numero_Contacto" placeholder="Teléfono de contacto:" id="Numero_Contacto" required>
+            <input type="text" name="Numero_Contacto" placeholder="Teléfono de contacto" id="Numero_Contacto" required>
 
             <label for="Edad">
                 <i class="fas fa-id-card"></i>

@@ -39,12 +39,12 @@
             <label for="Tamano">
                 <i class="fa-solid fa-ruler"></i>
             </label>
-            <input type="text" name="Tamano" placeholder="Tamano" id="Tamano" required>
+            <input type="text" name="Tamano" placeholder="Tamaño" id="Tamano" required>
 
             <label for="Numero_Contacto">
                 <i class="fa fa-phone"></i>
             </label>
-            <input type="text" name="Numero_Contacto" placeholder="Teléfono de contacto:" id="Numero_Contacto" required>
+            <input type="text" name="Numero_Contacto" placeholder="Teléfono de contacto" id="Numero_Contacto" required>
 
             <label for="Edad">
                 <i class="fas fa-id-card"></i>

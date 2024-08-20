@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
         <?php
          if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
             echo '<div class="adopt-button" style="display: initial";>
-               <a href="agregarPerro.php" style="color: white;text-decoration-line: none;" ;="">Publicar mascota</a>
+               <a href="agregar_Perro.php" style="color: white;text-decoration-line: none;" ;="">Publicar mascota</a>
            </div>';
            }
         ?>
@@ -74,7 +74,10 @@ if (!isset($_SESSION['loggedin'])) {
                     echo '        <p>Número de contacto: ' . htmlspecialchars($row['Numero_Contacto']) . '</p>';
                     echo '        <p>Necesidad especial: ' . htmlspecialchars($row['Necesidades_Especiales']) . '</p>';
                     echo '    </div>';
-                    echo '    <a href="#" class="adopt-button">¡Adóptame!</a>';
+                    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
+                        echo '    <a href="#" class="adopt-button">¡Adóptame!</a>';
+                        }
+                        
                     
                     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'si') {
                         echo '<br>

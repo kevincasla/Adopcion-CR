@@ -27,7 +27,7 @@
     $query = mysqli_query($conn, $sql);
 
     if($query){
-        Header("Location: agregarPerro.php");
+        Header("Location: adopcionPerros.php");
     }else{
 
     }
