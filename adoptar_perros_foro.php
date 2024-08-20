@@ -35,56 +35,52 @@
             <input type="text" name="Telefono" placeholder="Teléfono" id="Telefono" required>
 
             <label for="Motivo">
-                <i class="fas fa-reason"></i>
+                <i class="fa-solid fa-circle-info"></i>
             </label>
             <input type="text" name="Motivo" placeholder="Motivo" id="Motivo" required>
 
             <label for="Tipo_Vivienda">
-                <i class="fas fa-home"></i>
+                <i class="fa-solid fa-house"></i>
             </label>
             <input type="text" name="Tipo_Vivienda" placeholder="Tipo de Vivienda" id="Tipo_Vivienda" required>
 
             <label for="Visitas_Hogar">
-                <i class="fas fa-visit"></i>
+                <i class="fa-solid fa-eye"></i>
             </label>
-            <input type="text" name="Visitas_Hogar" placeholder="Visitas al Hogar" id="Visitas_Hogar" required>
+            <input type="text" name="Visitas_Hogar" placeholder="Visitas Hogar" id="Visitas_Hogar" required>
 
             <label for="correo">
-                <i class="fas fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
             </label>
-            <input type="email" name="correo" placeholder="Correo Electrónico" id="correo" required>
+            <input type="text" name="correo" placeholder="Correo" id="correo" required>
 
             <label for="Direccion">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fa-solid fa-location-dot"></i>
             </label>
             <input type="text" name="Direccion" placeholder="Dirección" id="Direccion" required>
 
             <label for="Edad">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fa-solid fa-calendar-days"></i>
             </label>
-            <input type="number" name="Edad" placeholder="Edad" id="Edad" required>
+            <input type="text" name="Edad" placeholder="Edad" id="Edad" required>
 
             <label for="Ocupacion">
-                <i class="fas fa-briefcase"></i>
+                <i class="fa-solid fa-briefcase"></i>
             </label>
             <input type="text" name="Ocupacion" placeholder="Ocupación" id="Ocupacion" required>
 
             <label for="Propiedad_De_Vivienda">
-                <i class="fas fa-home"></i>
+                <i class="fa-solid fa-house-user"></i>
             </label>
-            <input type="text" name="Propiedad_De_Vivienda" placeholder="Propiedad de Vivienda" id="Propiedad_De_Vivienda" required>
+            <input type="text" name="Propiedad_De_Vivienda" placeholder="Propiedad_De_Vivienda" id="Propiedad_De_Vivienda" required>
 
             <label for="Necesidades_Especiales">
-                <i class="fas fa-notes-medical"></i>
+                <i class="fa-solid fa-house-user"></i>
             </label>
             <input type="text" name="Necesidades_Especiales" placeholder="Necesidades Especiales" id="Necesidades_Especiales" required>
 
-            <label for="ID_Perro">
-                <i class="fas fa-dog"></i>
-            </label>
-            <input type="number" name="ID_Perro" placeholder="ID del Perro" id="ID_Perro" required>
 
-            <input type="submit" name="agregar_formulario_perro_btn" id="agregar_formulario_perro_btn" value="Agregar Formulario de Perro">
+            <input type="submit" href="adopcionPerros.php" name="agregar_tema_btn" id="agregar_tema_btn" value="Enviar solicitud">
         </form>
     </div>
 </body>

@@ -1,4 +1,5 @@
-<HTML>
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
 
     <div class="login">
         <h1>Formulario de Adopción de Gatos</h1>
-        <form name="formulario_gatos" action="procesar_formulario.php" method="POST">
+        <form name="formulario_gatos" action="adoptar_gatos_con.php" method="POST">
 
             <label for="nombre">
                 <i class="fas fa-id-card"></i>
@@ -50,42 +51,39 @@
             <input type="text" name="Visitas_Hogar" placeholder="Visitas al Hogar" id="Visitas_Hogar" required>
 
             <label for="correo">
-                <i class="fas fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
             </label>
-            <input type="email" name="correo" placeholder="Correo Electrónico" id="correo" required>
+            <input type="text" name="Correo" placeholder="Correo" id="correo" required>
 
             <label for="Direccion">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fa-solid fa-location-dot"></i>
             </label>
             <input type="text" name="Direccion" placeholder="Dirección" id="Direccion" required>
 
             <label for="Edad">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fa-solid fa-calendar-days"></i>
             </label>
-            <input type="number" name="Edad" placeholder="Edad" id="Edad" required>
+            <input type="text" name="Edad" placeholder="Edad" id="Edad" required>
 
             <label for="Ocupacion">
-                <i class="fas fa-briefcase"></i>
+                <i class="fa-solid fa-briefcase"></i>
             </label>
             <input type="text" name="Ocupacion" placeholder="Ocupación" id="Ocupacion" required>
 
             <label for="Propiedad_De_Vivienda">
-                <i class="fas fa-key"></i>
+                <i class="fa-solid fa-house"></i>
             </label>
-            <input type="text" name="Propiedad_De_Vivienda" placeholder="Propiedad de Vivienda (S/N)" id="Propiedad_De_Vivienda" required>
-
+            <input type="text" name="Propiedad_De_Vivienda" placeholder="Propiedad de Vivienda" id="Propiedad_De_Vivienda" requiered>
+            
             <label for="Necesidades_Especiales">
-                <i class="fas fa-notes-medical"></i>
+                <i class="fa-solid fa-person"></i>
             </label>
-            <input type="text" name="Necesidades_Especiales" placeholder="Necesidades Especiales" id="Necesidades_Especiales" required>
+            <input type="text" name="Necesidades_Especiales" placeholder="Necesidades Especiales" id="Necesidads_Especiales" requiered>
 
-            <label for="ID_Gato">
-                <i class="fas fa-cat"></i>
-            </label>
-            <input type="number" name="ID_Gato" placeholder="ID del Gato" id="ID_Gato" required>
+            
 
-            <input type="submit" name="enviar_formulario" id="enviar_formulario" value="Enviar formulario">
+            <input type="submit" href="adopcionGatos.php" name="enivar_solicitud_btn" id="enviar_solicitud_btn" value="Enviar solicitud">
         </form>
     </div>
 </body>
-</HTML>
+</html>
