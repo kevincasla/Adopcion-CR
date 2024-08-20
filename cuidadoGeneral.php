@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
     </script>
     
     <div class="container">
-        <h1>Cuidados para los Perros</h1>
+        <h1>Cuidados Generales</h1>
         <div class="cuidados-list">
             <?php
             $DATABASE_HOST = 'localhost:3307';

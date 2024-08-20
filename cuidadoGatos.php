@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin'])) {
         <?php
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
             echo '<div class="adopt-button" style="display: initial; margin: 100px";>
-               <a href="agregar_Cuidado_Perro.php" style="color: white;text-decoration-line: none;" ;="">Agregar cuidado</a>
+               <a href="agregar_Cuidado_Gato.php" style="color: white;text-decoration-line: none;" ;="">Agregar cuidado</a>
            </div>';
         }
         ?>

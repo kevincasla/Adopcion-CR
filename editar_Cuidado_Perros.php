@@ -54,22 +54,22 @@
         <label for="Titulo">
                 <i class="fas fa-id-card"></i>
             </label>
-            <input type="text" name="Titulo" placeholder="Titulo" id="Titulo" required>
+            <input type="text" name="Titulo" placeholder="Titulo" id="Titulo" value="<?= $row['Titulo']?>"  required>
             
             <label for="Descripcion">
                 <i class="fa-solid fa-venus-mars"></i>
             </label>
-            <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion" required>
+            <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion" value="<?= $row['Descripcion']?>"  required>
 
             <label for="Desarrollo">
                 <i class="fa-solid fa-ruler"></i>
             </label>
-            <input type="text" name="Desarrollo" placeholder="Desarrollo" id="Desarrollo" required>
+            <input type="text" name="Desarrollo" placeholder="Desarrollo" id="Desarrollo" value="<?= $row['Desarrollo']?>"  required>
 
             <label for="Imagen">
             <i class="fa-solid fa-image"></i>
             </label>
-            <input type="text" name="Imagen" placeholder="Link de la imagen" id="Imagen" required>
+            <input type="text" name="Imagen" placeholder="Link de la imagen" id="Imagen" value="<?= $row['Imagen']?>"  required>
 
             <input type="submit" name="editar_cuidado_btn"  id="editar_cuidado_btn" value="Actualizar informacion">
         </form>
