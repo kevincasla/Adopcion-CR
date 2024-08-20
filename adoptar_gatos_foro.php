@@ -1,3 +1,28 @@
+<?php
+
+// confirmar sesion
+session_start();
+
+
+if (!isset($_SESSION['loggedin'])) {
+
+    $_SESSION['loggedin'] = FALSE;
+}
+
+
+$servername = 'localhost:3307';
+$username = 'root';
+$password = "";
+$database = 'adopcion_cr';
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

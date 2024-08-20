@@ -78,7 +78,7 @@ if (!isset($_SESSION['loggedin'])) {
                     echo '        <p>Necesidad especial: ' . htmlspecialchars($row['Necesidades_Especiales']) . '</p>';
                     echo '    </div>';
                     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== false) {
-                    echo '    <a href="#" class="adopt-button">¡Adóptame!</a>';
+                    echo '    <a href="adoptar_gatos_foro.php" class="adopt-button">¡Adóptame!</a>';
                     }
                     
                     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'si') {

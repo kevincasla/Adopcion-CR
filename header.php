@@ -63,7 +63,7 @@ if ($conn->connect_error) {
                 </ul>
             </li>
             <li><a href="vetAsociados.php">Veterinarios</a></li>
-            <li><a href="foro.html">Foro</a></li>
+            <li><a href="foro.php">Foro</a></li>
             <li><a href="listaAlbergues.php">Albergues</a></li>
         </ul>
         <?php
